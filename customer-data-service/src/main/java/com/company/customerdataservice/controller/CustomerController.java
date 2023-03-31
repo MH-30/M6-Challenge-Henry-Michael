@@ -33,6 +33,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Customer getCustomerById(@PathVariable int id) {
         Optional<Customer> returnVal = repo.findById(id);
         if (returnVal.isPresent()) return returnVal.get();
@@ -40,6 +41,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/state/{state}")
+    @ResponseStatus(HttpStatus.OK)
     public List<Customer> getCustomersByState(@PathVariable String state) {
         return repo.findByState(state);
     }
